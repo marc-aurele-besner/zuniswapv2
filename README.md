@@ -25,6 +25,10 @@ Set a private key and address in `DEPLOYER_PRIVATE_KEY` and `DEPLOYER_ADDRESS`
 
 - `source .env && forge script script/Deploy.s.sol:DeployScript --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --verifier blockscout --verifier-url $VERIFIER_URL`
 
+### Deploy and setup
+
+- `source .env && forge script script/DeployAndSetup.s.sol:DeployAndSetupScript --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --verifier blockscout --verifier-url $VERIFIER_URL`
+
 #### Create 1 pair
 
 - `source .env && cast send $FACTORY "createPair(address,address)" $TOKEN1 $TOKEN2  --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
