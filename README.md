@@ -21,24 +21,27 @@ To allow for live or testing again, a localhost RPC
 
 Set a private key and address in `DEPLOYER_PRIVATE_KEY` and `DEPLOYER_ADDRESS`
 
-Deploy contracts:
+#### Deploy contracts:
 
-`source .env && forge script script/Deploy.s.sol:DeployScript --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --verifier blockscout --verifier-url $VERIFIER_URL`
+- `source .env && forge script script/Deploy.s.sol:DeployScript --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --verifier blockscout --verifier-url $VERIFIER_URL`
 
-Create 1 pair:
-`source .env && cast send $FACTORY "createPair(address,address)" $TOKEN1 $TOKEN2  --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
+#### Create 1 pair:
 
-Approve Spending for each token:
-`source .env && cast send $TOKEN1 "approve(address,uint256)" $ROUTER 1000000000000000000 --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
-`source .env && cast send $TOKEN2 "approve(address,uint256)" $ROUTER 1000000000000000000 --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
-`source .env && cast send $TOKEN2 "approve(address,uint256)" $ROUTER 1000000000000000000 --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
+- `source .env && cast send $FACTORY "createPair(address,address)" $TOKEN1 $TOKEN2  --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
 
-Add liquidity:
-`source .env && cast send $ROUTER "addLiquidity(address,address,uint256,uint256,uint256,uint256,address)" $TOKEN1 $TOKEN2 1000000000000000000 1000000000000000000 1000000000000000000 1000000000000000000 $DEPLOYER_ADDRESS  --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
+#### Approve Spending for each token:
 
-Add liquidity (with override gas limit)
+- `source .env && cast send $TOKEN1 "approve(address,uint256)" $ROUTER 1000000000000000000 --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
+- `source .env && cast send $TOKEN2 "approve(address,uint256)" $ROUTER 1000000000000000000 --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
+- `source .env && cast send $TOKEN2 "approve(address,uint256)" $ROUTER 1000000000000000000 --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
 
-`source .env && cast send $ROUTER "addLiquidity(address,address,uint256,uint256,uint256,uint256,address)" $TOKEN1 $TOKEN2 1000000000000000000 1000000000000000000 1000000000000000000 1000000000000000000 $DEPLOYER_ADDRESS  --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY  --gas-limit 100000`
+#### Add liquidity:
+
+- `source .env && cast send $ROUTER "addLiquidity(address,address,uint256,uint256,uint256,uint256,address)" $TOKEN1 $TOKEN2 1000000000000000000 1000000000000000000 1000000000000000000 1000000000000000000 $DEPLOYER_ADDRESS  --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
+
+#### Add liquidity (with override gas limit)
+
+- `source .env && cast send $ROUTER "addLiquidity(address,address,uint256,uint256,uint256,uint256,address)" $TOKEN1 $TOKEN2 1000000000000000000 1000000000000000000 1000000000000000000 1000000000000000000 $DEPLOYER_ADDRESS  --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY  --gas-limit 100000`
 
 ## Reference
 
