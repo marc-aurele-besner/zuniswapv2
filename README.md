@@ -28,6 +28,11 @@ Deploy contracts:
 Create 1 pair:
 `source .env && cast send $FACTORY "createPair(address,address)" $TOKEN1 $TOKEN2  --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
 
+Approve Spending for each token:
+`source .env && cast send $TOKEN1 "approve(address,uint256)" $ROUTER 1000000000000000000 --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
+`source .env && cast send $TOKEN2 "approve(address,uint256)" $ROUTER 1000000000000000000 --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
+`source .env && cast send $TOKEN2 "approve(address,uint256)" $ROUTER 1000000000000000000 --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
+
 Add liquidity:
 `source .env && cast send $ROUTER "addLiquidity(address,address,uint256,uint256,uint256,uint256,address)" $TOKEN1 $TOKEN2 1000000000000000000 1000000000000000000 1000000000000000000 1000000000000000000 $DEPLOYER_ADDRESS  --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
 
