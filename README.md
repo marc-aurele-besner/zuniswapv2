@@ -31,17 +31,17 @@ Set a private key and address in `DEPLOYER_PRIVATE_KEY` and `DEPLOYER_ADDRESS`
 
 #### Approve Spending for each token:
 
-- `source .env && cast send $TOKEN1 "approve(address,uint256)" $ROUTER 1000000000000000000 --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
-- `source .env && cast send $TOKEN2 "approve(address,uint256)" $ROUTER 1000000000000000000 --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
-- `source .env && cast send $TOKEN3 "approve(address,uint256)" $ROUTER 1000000000000000000 --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
+- `source .env && cast send $TOKEN1 "approve(address,uint256)" $ROUTER $AMOUNT --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
+- `source .env && cast send $TOKEN2 "approve(address,uint256)" $ROUTER $AMOUNT --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
+- `source .env && cast send $TOKEN3 "approve(address,uint256)" $ROUTER $AMOUNT --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
 
 #### Add liquidity:
 
-- `source .env && cast send $ROUTER "addLiquidity(address,address,uint256,uint256,uint256,uint256,address)" $TOKEN1 $TOKEN2 1000000000000000000 1000000000000000000 1000000000000000000 1000000000000000000 $DEPLOYER_ADDRESS  --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
+- `source .env && cast send $ROUTER "addLiquidity(address,address,uint256,uint256,uint256,uint256,address)" $TOKEN1 $TOKEN2 $AMOUNT $AMOUNT $AMOUNT $AMOUNT $DEPLOYER_ADDRESS  --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
 
 #### Add liquidity (with override gas limit)
 
-- `source .env && cast send $ROUTER "addLiquidity(address,address,uint256,uint256,uint256,uint256,address)" $TOKEN1 $TOKEN2 1000000000000000000 1000000000000000000 1000000000000000000 1000000000000000000 $DEPLOYER_ADDRESS  --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY  --gas-limit 100000`
+- `source .env && cast send $ROUTER "addLiquidity(address,address,uint256,uint256,uint256,uint256,address)" $TOKEN1 $TOKEN2 $AMOUNT $AMOUNT $AMOUNT $AMOUNT $DEPLOYER_ADDRESS  --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY  --gas-limit 100000`
 
 ## Reference
 

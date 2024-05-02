@@ -31,14 +31,3 @@ contract DeployScript is Script {
         vm.stopBroadcast();
     }
 }
-
-
-/*
-    don't forget to add the deployed address in .env
-
-    Create 1 pair:
-    source .env && cast send $FACTORY "createPair(address,address)" $TOKEN1 $TOKEN2  --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY
-
-    Add liquidity:
-    source .env && cast send $ROUTER "addLiquidity(address,address,uint256,uint256,uint256,uint256,address)" $TOKEN1 $TOKEN2 1000000000000000000 1000000000000000000 1000000000000000000 1000000000000000000 $DEPLOYER_ADDRESS  --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY
-*/
