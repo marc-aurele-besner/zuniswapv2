@@ -33,7 +33,7 @@ Set a private key and address in `DEPLOYER_PRIVATE_KEY` and `DEPLOYER_ADDRESS`
 
 - `source .env && cast send $TOKEN1 "approve(address,uint256)" $ROUTER 1000000000000000000 --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
 - `source .env && cast send $TOKEN2 "approve(address,uint256)" $ROUTER 1000000000000000000 --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
-- `source .env && cast send $TOKEN2 "approve(address,uint256)" $ROUTER 1000000000000000000 --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
+- `source .env && cast send $TOKEN3 "approve(address,uint256)" $ROUTER 1000000000000000000 --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
 
 #### Add liquidity:
 
