@@ -5,7 +5,7 @@ import "forge-std/Test.sol";
 import "../src/ZuniswapV2Factory.sol";
 import "../src/ZuniswapV2Pair.sol";
 import "../src/libraries/UQ112x112.sol";
-import "./mocks/ERC20Mintable.sol";
+import "../src/mocks/ERC20Mintable.sol";
 
 contract ZuniswapV2PairTest is Test {
     ERC20Mintable token0;
