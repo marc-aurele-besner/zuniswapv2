@@ -11,10 +11,26 @@
 1. Run tests:
    `forge test`
 
-## Blog posts
+## Add deployment and setup script
 
-1. [Part 1](https://jeiwan.net/posts/programming-defi-uniswapv2-1/), architecture of UniswapV2, adding liquidity, first tests in Solidity, removing liquidity.
-1. [Part 2](https://jeiwan.net/posts/programming-defi-uniswapv2-2/), tokens swapping, re-entrancy attacks and protection,
-   price oracle, integer overflow and underflow, safe transfer.
-1. [Part 3](https://jeiwan.net/posts/programming-defi-uniswapv2-3/), factory contract, CREATE2 opcode, Router contract, Library contract
-1. [Part 4](https://jeiwan.net/posts/programming-defi-uniswapv2-4/), LP-tokens burning bug, liquidity removal, output amount calculation, swapExactTokensForTokens, swapTokensForExactTokens, fixing swap fee bug, flash loans, fixing re-entrancy vulnerability, protocol fees
+To allow for live or testing again, a localhost RPC
+
+### Instruction
+
+`cp .env.sample .env`
+
+Set a private key and address in `DEPLOYER_PRIVATE_KEY` and `DEPLOYER_ADDRESS`
+
+Deploy contracts:
+
+`source .env && forge script script/Deploy.s.sol:DeployScript --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY --broadcast --verify --verifier blockscout --verifier-url $VERIFIER_URL`
+
+Create 1 pair:
+`source .env && cast send $FACTORY "createPair(address,address)" $TOKEN1 $TOKEN2  --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
+
+Add liquidity:
+`source .env && cast send $ROUTER "addLiquidity(address,address,uint256,uint256,uint256,uint256,address)" $TOKEN1 $TOKEN2 1000000000000000000 1000000000000000000 1000000000000000000 1000000000000000000 $DEPLOYER_ADDRESS  --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
+
+## Reference
+
+This repo was a fork of  [Zuniswap2](https://github.com/Jeiwan/zuniswapv2)
