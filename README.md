@@ -31,6 +31,13 @@ Set a private key and address in `DEPLOYER_PRIVATE_KEY` and `DEPLOYER_ADDRESS`
 
 ***If you want the receipt, you can add `-- --receipt`***
 
+#### Mint some tokens
+
+- `source .env && cast send $TOKEN1 "mint(uint256,address)" $AMOUNT $DEPLOYER_ADDRESS --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
+- `source .env && cast send $TOKEN2 "mint(uint256,address)" $AMOUNT $DEPLOYER_ADDRESS --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
+
+***If you want the receipt, you can add `-- --receipt`***
+
 #### Approve Spending for each tokens
 
 - `source .env && cast send $TOKEN1 "approve(address,uint256)" $ROUTER $AMOUNT --rpc-url $NOVA_RPC_URL --private-key $DEPLOYER_PRIVATE_KEY`
