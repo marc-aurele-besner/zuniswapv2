@@ -12,19 +12,22 @@ import "../src/mocks/ERC20Mintable.sol";
 */
 
 contract DeployAndSetupScript is Script {
-
     event LogBalance(address token, address owner, uint256 balance);
     event LogAllowance(address token, address owner, address spender, uint256 allowance);
 
-    function setUp() public {}
+    address owner;
+
+    function setUp() public {
+        uint256 privateKey = vm.envUint("DEPLOYER_PRIVATE_KEY");
+        owner = vm.addr(privateKey);
+    }
 
     function run() public {
-        vm.startBroadcast();
+        vm.startBroadcast(owner);
 
         ZuniswapV2Factory factory = new ZuniswapV2Factory();
         ZuniswapV2Router router = new ZuniswapV2Router(address(factory));
 
-        address owner = address(this);
         address spender = address(router);
 
         ERC20Mintable tokenA = new ERC20Mintable("Token 1", "TKN1");
@@ -42,15 +45,7 @@ contract DeployAndSetupScript is Script {
         emit LogAllowance(address(tokenA), owner, spender, tokenA.allowance(owner, spender));
         emit LogAllowance(address(tokenB), owner, spender, tokenB.allowance(owner, spender));
 
-        router.addLiquidity(
-            address(tokenA),
-            address(tokenB),
-            1 ether,
-            1 ether,
-            1 ether,
-            1 ether,
-            owner
-        );
+        router.addLiquidity(address(tokenA), address(tokenB), 1 ether, 1 ether, 1 ether, 1 ether, owner);
 
         vm.stopBroadcast();
     }
